@@ -6,22 +6,23 @@
 
     <StackLayout>
         <Label Text="Welcome to RBA Custom Page"
+               Style="{StaticResource {x:Type Label}}"
                FontSize="24"
                HorizontalOptions="Center"
-               VerticalOptions="StartAndExpand"
-               FontFamily="RBAFontFamily" />
+               VerticalOptions="StartAndExpand" />
 
         <Button Text="RBA Button"
+                Style="{StaticResource {x:Type Button}}"
                 FontSize="18"
                 HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand"
-                BackgroundColor="#00BCD4"
-                TextColor="#FFFFFF" />
+                VerticalOptions="CenterAndExpand" />
 
         <Image Source="Resources/Images/rba_image.png"
+               Style="{StaticResource {x:Type Image}}"
                HorizontalOptions="Center"
                VerticalOptions="CenterAndExpand" />
     </StackLayout>
 
 </ContentPage>
+
 
