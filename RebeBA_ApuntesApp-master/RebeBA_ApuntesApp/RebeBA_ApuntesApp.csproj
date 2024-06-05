@@ -64,6 +64,7 @@
 	  <None Remove="Resources\Images\icon_notes.png" />
 	  <None Remove="Resources\Images\icon_notes_ios.png" />
 	  <None Remove="Resources\Images\rba_image.png" />
+	  <None Remove="Resources\Images\splashsplashscreen.png" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -16,7 +16,7 @@
     </FlyoutItem>
 
     <FlyoutItem Title="Custom" Icon="Resources/Images/icon_custom.png">
-        <ShellContent ContentTemplate="{DataTemplate views:RebeBA_CustomPage}" />
+        <ShellContent ContentTemplate="{DataTemplate views:RBA_CustomPage}" />
     </FlyoutItem>
 
 </Shell>

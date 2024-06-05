@@ -1,55 +1,65 @@
-namespace RebeBA_ApuntesApp.Views;
+using Microsoft.Maui.Controls;
+using System;
+using System.Linq;
 
-[QueryProperty(nameof(ItemId), nameof(ItemId))]
-public partial class RebeBA_NotePage : ContentPage
+namespace RebeBA_ApuntesApp.Views
 {
-    public string ItemId
+    public partial class RebeBA_NotePage : ContentPage
     {
-        set { LoadNote(value); }
-    }
-    
-    public RebeBA_NotePage()
-	{
-		InitializeComponent();
-
-        string appDataPath = FileSystem.AppDataDirectory;
-        string randomFileName = $"{Path.GetRandomFileName()}.notes.txt";
-
-        LoadNote(Path.Combine(appDataPath, randomFileName));
-    }
-
-    private async void SaveButton_Clicked(object sender, EventArgs e)
-    {
-        if (BindingContext is Models.RebeBA_Note note)
-            File.WriteAllText(note.Filename, TextEditor.Text);
-
-        await Shell.Current.GoToAsync("..");
-    }
-
-    private async void DeleteButton_Clicked(object sender, EventArgs e)
-    {
-        if (BindingContext is Models.RebeBA_Note note)
+        public RebeBA_NotePage()
         {
-            // Delete the file.
-            if (File.Exists(note.Filename))
-                File.Delete(note.Filename);
+            InitializeComponent();
         }
 
-        await Shell.Current.GoToAsync("..");
-    }
-
-    private void LoadNote(string fileName)
-    {
-        Models.RebeBA_Note noteModel = new Models.RebeBA_Note();
-        noteModel.Filename = fileName;
-
-        if (File.Exists(fileName))
+        private void OnCalculateClicked(object sender, EventArgs e)
         {
-            noteModel.Date = File.GetCreationTime(fileName);
-            noteModel.Text = File.ReadAllText(fileName);
+            string input = noteEditor.Text;
+
+            if (string.IsNullOrEmpty(input))
+            {
+                lettersLabel.Text = "Letras: 0";
+                numbersLabel.Text = "Números: 0";
+                uppercaseLabel.Text = "Mayúsculas: 0";
+                lowercaseLabel.Text = "Minúsculas: 0";
+                vowelsLabel.Text = "Vocales: 0";
+                totalLabel.Text = "Total: 0";
+                return;
+            }
+
+            int totalCharacters = input.Length;
+            int numberCount = input.Count(char.IsDigit);
+            int letterCount = input.Count(char.IsLetter);
+            int vowelCount = input.Count(c => "AEIOUaeiou".IndexOf(c) >= 0);
+            int uppercaseCount = input.Count(char.IsUpper);
+            int lowercaseCount = input.Count(char.IsLower);
+
+            lettersLabel.Text = $"Letras: {letterCount}";
+            numbersLabel.Text = $"Números: {numberCount}";
+            uppercaseLabel.Text = $"Mayúsculas: {uppercaseCount}";
+            lowercaseLabel.Text = $"Minúsculas: {lowercaseCount}";
+            vowelsLabel.Text = $"Vocales: {vowelCount}";
+            totalLabel.Text = $"Total: {totalCharacters}";
         }
 
-        BindingContext = noteModel;
-    }
+        private void OnSaveClicked(object sender, EventArgs e)
+        {
+            // Implement your save logic here
+        }
 
+        private void OnClearClicked(object sender, EventArgs e)
+        {
+            noteEditor.Text = string.Empty;
+            lettersLabel.Text = "Letras: 0";
+            numbersLabel.Text = "Números: 0";
+            uppercaseLabel.Text = "Mayúsculas: 0";
+            lowercaseLabel.Text = "Minúsculas: 0";
+            vowelsLabel.Text = "Vocales: 0";
+            totalLabel.Text = "Total: 0";
+        }
+
+        private void OnDeleteClicked(object sender, EventArgs e)
+        {
+            // Implement your delete logic here
+        }
+    }
 }
