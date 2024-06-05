@@ -59,8 +59,11 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\icon_about.png" />
 	  <None Remove="Resources\Images\icon_about_ios.png" />
+	  <None Remove="Resources\Images\icon_custom.png" />
+	  <None Remove="Resources\Images\icon_custom_ios.png" />
 	  <None Remove="Resources\Images\icon_notes.png" />
 	  <None Remove="Resources\Images\icon_notes_ios.png" />
+	  <None Remove="Resources\Images\rba_image.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -70,6 +73,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\RBA_CustomPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\RebeBA_AboutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

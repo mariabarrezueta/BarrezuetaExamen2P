@@ -4,19 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:RebeBA_ApuntesApp.Views"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutBehavior="Flyout"
     Title="RebeBA_ApuntesApp">
 
-    <TabBar>
-        <ShellContent
-        Title="Notes"
-        ContentTemplate="{DataTemplate views:RebeBA_AllNotesPage}"
-        Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+    <FlyoutItem Title="Notes" Icon="Resources/Images/icon_notes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:RebeBA_AllNotesPage}" />
+    </FlyoutItem>
 
-        <ShellContent
-        Title="About"
-        ContentTemplate="{DataTemplate views:RebeBA_AboutPage}"
-        Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
-    </TabBar>
+    <FlyoutItem Title="About" Icon="Resources/Images/icon_about.png">
+        <ShellContent ContentTemplate="{DataTemplate views:RebeBA_AboutPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Custom" Icon="Resources/Images/icon_custom.png">
+        <ShellContent ContentTemplate="{DataTemplate views:RebeBA_CustomPage}" />
+    </FlyoutItem>
 
 </Shell>
+
+
+
