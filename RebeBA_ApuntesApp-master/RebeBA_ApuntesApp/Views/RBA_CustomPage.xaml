@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RebeBA_ApuntesApp.Views.RebeBA_CustomPage"
+             x:Class="RebeBA_ApuntesApp.Views.RBA_CustomPage"
              Title="Custom Page">
 
-    <StackLayout>
+    <StackLayout Padding="20">
         <Label Text="Welcome to RBA Custom Page"
-               Style="{StaticResource {x:Type Label}}"
                FontSize="24"
                HorizontalOptions="Center"
-               VerticalOptions="StartAndExpand" />
+               VerticalOptions="StartAndExpand"
+               FontFamily="RBAFontFamily" />
 
-        <Button Text="RBA Button"
-                Style="{StaticResource {x:Type Button}}"
-                FontSize="18"
+        <Entry x:Name="inputEntry" Placeholder="Enter alphanumeric string" />
+
+        <Button Text="Calculate"
+                Clicked="OnCalculateClicked"
+                BackgroundColor="#00BCD4"
+                TextColor="#FFFFFF"
                 HorizontalOptions="Center"
                 VerticalOptions="CenterAndExpand" />
 
-        <Image Source="Resources/Images/rba_image.png"
-               Style="{StaticResource {x:Type Image}}"
+        <Button Text="Clear"
+                Clicked="OnClearClicked"
+                BackgroundColor="#FF5722"
+                TextColor="#FFFFFF"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand" />
+
+        <Label x:Name="resultLabel" Text="Results will appear here"
                HorizontalOptions="Center"
                VerticalOptions="CenterAndExpand" />
     </StackLayout>
 
 </ContentPage>
+
+
 
 
